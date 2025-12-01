@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "avaliador-projetos-front": {
+    "karaoke-organizer-front": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -57,10 +57,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "avaliador-projetos-front:build:production"
+              "buildTarget": "karaoke-organizer-front:build:production"
             },
             "development": {
-              "buildTarget": "avaliador-projetos-front:build:development"
+              "buildTarget": "karaoke-organizer-front:build:development"
             }
           },
           "defaultConfiguration": "development"
