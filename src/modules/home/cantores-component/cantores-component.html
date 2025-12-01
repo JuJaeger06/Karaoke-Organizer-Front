@@ -1,0 +1,45 @@
+<mat-card class="cantor-card">
+  <mat-card-header>
+    <mat-card-title>Cadastro de Novo Cantor</mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content>
+    <form [formGroup]="form" (ngSubmit)="adicionarCantor()" class="cantor-form">
+
+      <mat-form-field appearance="outline" class="form-full-width">
+        <mat-label>Nome Completo</mat-label>
+        <input matInput type="text" formControlName="nomePessoa">
+        <mat-error>
+          O nome é obrigatório
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="form-full-width">
+        <mat-label>CPF</mat-label>
+        <input
+            matInput
+            type="text"
+            formControlName="cpfPessoa"
+            mask="000.000.000-00"
+            [dropSpecialCharacters]="false"
+        >
+        <mat-error *ngIf="form.get('cpfPessoa')?.hasError('required') && form.get('cpfPessoa')?.touched">
+          O CPF é obrigatório
+        </mat-error>
+        <mat-error *ngIf="form.get('cpfPessoa')?.hasError('cpfInvalido')">
+          CPF inválido
+        </mat-error>
+      </mat-form-field>
+
+      <button
+        mat-raised-button
+        color="primary"
+        type="submit"
+      >
+        <mat-icon>person_add</mat-icon>
+        Adicionar Cantor
+      </button>
+
+    </form>
+  </mat-card-content>
+</mat-card>

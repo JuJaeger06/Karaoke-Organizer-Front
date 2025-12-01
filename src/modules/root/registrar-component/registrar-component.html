@@ -1,0 +1,54 @@
+<div>
+  <h5>Cadastrar Funcionário</h5>
+
+  <form [formGroup]="form" (ngSubmit)="criarFunc()" class="mb-4">
+    <div class="d-flex">
+      <mat-form-field appearance="outline" class="me-2 flex-grow-1">
+        <mat-label>Nome</mat-label>
+        <input matInput type="text" formControlName="nome">
+        <mat-error>
+          Nome é obrigatório
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="me-2 flex-grow-1">
+        <mat-label>Email</mat-label>
+        <input matInput type="email" formControlName="email">
+        <mat-error>
+          Email é obrigatório
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="d-flex">
+      <mat-form-field appearance="outline" class="me-2 flex-grow-1">
+        <mat-label>Senha</mat-label>
+        <input matInput type="password" formControlName="senha">
+        <mat-error>
+          Senha é obrigatória
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="me-2 flex-grow-1">
+        <mat-label>Confirmar Senha</mat-label>
+        <input matInput type="password" formControlName="confirmsenha">
+        <mat-error *ngIf="form.get('confirmsenha')?.hasError('required')">
+          Senha é obrigatória
+        </mat-error>
+        <mat-error *ngIf="form.errors?.['mismatch'] && form.get('confirmsenha')?.touched">
+          As senhas não coincidem.
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="d-flex justify-content-center gap-3">
+      <button mat-raised-button color="primary" (click)="voltar()" type="button">
+        Voltar
+      </button>
+
+      <button mat-raised-button color="primary" type="submit">
+        Criar Funcionário
+      </button>
+    </div>
+  </form>
+</div>

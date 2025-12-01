@@ -1,0 +1,45 @@
+<div class="d-flex flex-column align-items-center">
+  <h2 mat-dialog-title>Adicionar Nova Música</h2>
+
+  <mat-dialog-content [formGroup]="musicaForm" class="d-flex flex-column align-items-center">
+
+    <mat-form-field appearance="outline">
+      <mat-label>Nome da Música</mat-label>
+      <input matInput formControlName="nome" required>
+      <mat-error *ngIf="musicaForm.get('nome')?.hasError('required')">
+        Nome da música é obrigatório.
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Cantor Original</mat-label>
+      <input matInput formControlName="cantorOriginal" required>
+      <mat-error *ngIf="musicaForm.get('cantorOriginal')?.hasError('required')">
+        Cantor original é obrigatório.
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Cantor da Mesa</mat-label>
+      <mat-select formControlName="cantorMesa" required>
+        <mat-option *ngFor="let cantor of cantores" [value]="cantor">
+          {{ cantor.nome }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+  </mat-dialog-content>
+
+  <mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Cancelar</button>
+
+    <button
+      mat-raised-button
+      color="primary"
+      [disabled]="musicaForm.invalid"
+      (click)="adicionarMusica()"
+    >
+      Adicionar à Fila
+    </button>
+  </mat-dialog-actions>
+</div>
